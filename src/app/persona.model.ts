@@ -10,7 +10,7 @@ export class PErsona{
 
 
     /*
-    SINTAXIS SIMPLIFICADA PARA CREAR ATRIBUTOS
+    //SINTAXIS SIMPLIFICADA PARA CREAR ATRIBUTOS
     constructor(public nombre:string, public apellido:string){}
     */
 }
