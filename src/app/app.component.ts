@@ -15,7 +15,15 @@ export class AppComponent {
   ];
 
   personaAgregada(persona:PErsona){
-    this.personas.push(persona);
+    let existe = false;
+    this.personas.forEach(personaLst => {
+      existe = personaLst.igual(persona);
+      if(existe) throw new Error("Persona repetida");
+    });
+
+    if(!existe){
+      this.personas.push(persona);
+    }
   }
 
 }
