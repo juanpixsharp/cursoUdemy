@@ -1,7 +1,31 @@
-<div class="container bg-primary">
+<div class="container">
+  <div class="col">
+    <h3>{{titulo}}</h3>
+  </div>
+  <hr>
+  <form class="form row">
+    <div class="form-group col-md-4">
+      <label for="nombre" class="visually-hidden">Nombre:</label>
+      <input type="text" name="nombre" id="nombre" placeholder="Ej: Juan" class="form-control" [(ngModel)]="nombreInput">
+    </div>
+    <div class="form-group col-md-4">
+      <label for="apellido" class="visually-hidden">Apellido:</label>
+      <input type="text" name="apellido" id="apellido" placeholder="Ej: Martinez" class="form-control" [(ngModel)]="apellidoInput">
+    </div>
+    <div class="col">
+      <button type="submit" class="btn btn-primary col-12" (click)="agregarPersona();">
+        Agregar
+      </button>
+    </div>
+  </form>
+</div>
+<hr>
+<div class="container">
   <div class="row">
-    <div class="col text-center">
-      <h1>{{ titulo }}</h1>
+    <div class="col">
+      <div *ngFor="let persona of personas; let i = index">
+          {{i+1}}: {{ persona.nombre }} {{ persona.apellido }}
+      </div>
     </div>
   </div>
 </div>
