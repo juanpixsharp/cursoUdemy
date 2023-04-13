@@ -14,7 +14,13 @@ export class FormularioComponent {
   @ViewChild('nombreRef') nombreInput: ElementRef;
   @ViewChild('apellidoRef') apellidoInput: ElementRef;
 
-  constructor(private logginService:LoggingService, private personasService: PersonasService){}
+  constructor(private logginService:LoggingService, private personasService: PersonasService){
+
+    this.personasService.saludar.subscribe(
+      (indice: number) => {alert("El indice es: " + indice);}
+    )
+
+  }
 
   agregarPersona(){
     if(this.nombreInput.nativeElement.value!='' && this.apellidoInput.nativeElement.value!=''){
