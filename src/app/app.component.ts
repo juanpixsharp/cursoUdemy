@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { PErsona } from './persona.model';
+import { LoggingService } from './LoggingService.service';
 
 @Component({
   selector: 'app-root',
@@ -7,6 +8,9 @@ import { PErsona } from './persona.model';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+
+  constructor(private loggingService:LoggingService){}
+
   titulo = 'Listado de Personas';
   personas:PErsona[] = [
     new PErsona("Juan","Martinez"),
@@ -23,6 +27,8 @@ export class AppComponent {
 
     if(!existe){
       this.personas.push(persona);
+      this.loggingService.enviaMensajeAConsola("Nueva persona agregada. Nombre: "
+        + persona.nombre + " | Apellido: " + persona.apellido);
     }
   }
 
