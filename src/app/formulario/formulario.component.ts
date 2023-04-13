@@ -18,10 +18,12 @@ export class FormularioComponent {
 
   agregarPersona(){
     if(this.nombreInput.nativeElement.value!='' && this.apellidoInput.nativeElement.value!=''){
+      
+      /*
       this.logginService.enviaMensajeAConsola("Enviamos persona: "
         + this.nombreInput.nativeElement.value + " "
         + this.apellidoInput.nativeElement.value);
-      /*
+        
       this.personaCreada.emit(
         new PErsona(this.nombreInput.nativeElement.value,
           this.apellidoInput.nativeElement.value)
