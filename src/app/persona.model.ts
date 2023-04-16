@@ -8,12 +8,7 @@ export class PErsona{
         this.apellido = apellido;
     }
 
-    igual(nPersona:PErsona):boolean{
-        return (
-            this.nombre.toUpperCase()==nPersona.nombre.toUpperCase() &&
-            this.apellido.toUpperCase()==nPersona.apellido.toUpperCase()
-        );
-    }
+    
 
     /*
     //SINTAXIS SIMPLIFICADA PARA CREAR ATRIBUTOS

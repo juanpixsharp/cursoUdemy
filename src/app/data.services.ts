@@ -21,4 +21,22 @@ export class DataServices{
     cargarPersonas(){
         return this.httpClient.get<PErsona[]>('https://listado-personas-4f759-default-rtdb.firebaseio.com/datos.json');
     }
+
+    modificarPersona(index: number, persona: PErsona){
+        let url: string;
+        url = "https://listado-personas-4f759-default-rtdb.firebaseio.com/datos/" + index + ".json";
+        this.httpClient.put(url, persona).subscribe({
+            next: (v) => console.log("Resultado de modificar la persona: " + v),
+            error: (e) => console.error("Error al modificar persona: " + e)
+        });
+    }
+
+    eliminarPersona(index: number){
+        let url: string;
+        url = "https://listado-personas-4f759-default-rtdb.firebaseio.com/datos/" + index + ".json";
+        this.httpClient.delete(url).subscribe({
+            next: (v) => console.log("Resultado de eliminar la persona: " + v),
+            error: (e) => console.error("Error al eliminar persona: " + e)
+        });
+    }
 }
