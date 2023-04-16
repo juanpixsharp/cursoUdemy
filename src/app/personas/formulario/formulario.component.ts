@@ -14,6 +14,7 @@ export class FormularioComponent {
   nombreInput: string;
   apellidoInput: string;
   index: number;
+  modoEdicion: number;
 
   constructor(
     private personasService: PersonasService,
@@ -29,7 +30,9 @@ export class FormularioComponent {
 
   ngOnInit(){
     this.index = this.route.snapshot.params['id'];
-    if(this.index){
+    this.modoEdicion = +this.route.snapshot.queryParams['modoEdicion'];
+
+    if(this.modoEdicion!= null && this.modoEdicion===1){
       let persona = this.personasService.encontrarPersona(this.index);
       this.nombreInput = persona.nombre;
       this.apellidoInput = persona.apellido;
@@ -38,7 +41,7 @@ export class FormularioComponent {
 
   onGuardarPersona(){
     let persona1 = new PErsona(this.nombreInput, this.apellidoInput);
-    if(this.index){
+    if(this.modoEdicion!= null && this.modoEdicion===1){
       this.personasService.modificarPersona(this.index, persona1);
     }else{
       this.personasService.personas.push(persona1);
@@ -47,7 +50,7 @@ export class FormularioComponent {
   }
 
   eliminarPersona(){
-    if(this.index!=null){
+    if(this.modoEdicion!= null && this.modoEdicion===1){
       this.personasService.eliminarPersona(this.index);
     }
     this.router.navigate(['personas']);

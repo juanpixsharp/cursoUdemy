@@ -20,7 +20,7 @@
         type="submit"
         style="cursor:pointer;"
       >+</button>
-      <button *ngIf="index!=null"
+      <button *ngIf="this.modoEdicion!= null && this.modoEdicion===1"
       type="submit" class="buttonRed" style="cursor:pointer;"
       (click)="eliminarPersona()"
       >-</button>
