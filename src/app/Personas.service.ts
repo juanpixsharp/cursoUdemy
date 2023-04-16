@@ -1,32 +1,34 @@
 import { LoggingService } from "./LoggingService.service";
+import { DataServices } from "./data.services";
 import { PErsona } from "./persona.model";
 import {EventEmitter, Injectable} from "@angular/core";
 
 @Injectable()
 export class PersonasService{
-    
-  personas:PErsona[] = [
-    new PErsona("Juan","Martinez"),
-    new PErsona("Laura","Chan"),
-    new PErsona("Carlos","Merlin")
-  ];
+  
+  personas:PErsona[] = [];
 
   saludar = new EventEmitter<number>();
 
-  constructor(private logginService: LoggingService){}
+  constructor(private logginService: LoggingService, private dataService: DataServices){}
+
+  setPersonas(personas: PErsona[]){
+    this.personas = personas;
+  }
+
+  obhtenerPersonas(){
+    return this.dataService.cargarPersonas();
+  }
 
   agregarPersona(persona:PErsona){
 
     this.logginService.enviaMensajeAConsola("Persona recibida: " + persona.nombre + " " + persona.apellido);
+    if(this.personas==null){
+      this.personas = [];
+    }
+    this.personas.push(persona);
+    this.dataService.guardarPersonas(this.personas);
 
-    let existe:boolean = false;
-
-    this.personas.forEach(personaLst => {
-      existe = personaLst.igual(persona);
-      if(existe) throw new Error("Persona repetida");
-    });
-
-    if(!existe) this.personas.push(persona);
   }
 
   encontrarPersona(index: number){

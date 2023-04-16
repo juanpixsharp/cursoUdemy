@@ -44,7 +44,8 @@ export class FormularioComponent {
     if(this.modoEdicion!= null && this.modoEdicion===1){
       this.personasService.modificarPersona(this.index, persona1);
     }else{
-      this.personasService.personas.push(persona1);
+      //this.personasService.personas.push(persona1);
+      this.personasService.agregarPersona(persona1);
     }
     this.router.navigate(['/personas']);
   }

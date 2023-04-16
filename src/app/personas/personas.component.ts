@@ -18,13 +18,17 @@ export class PersonasComponent {
     private router: Router){}
 
   ngOnInit(): void {
-    this.personas = this.personasService.personas;
+    //this.personas = this.personasService.personas;
+    this.personasService.obhtenerPersonas().subscribe({
+      next: (v) => {
+        this.personas = v;
+        this.personasService.setPersonas(v);
+      }
+    });
   }
 
   agregar(){
-    this.router.navigate(
-    ["personas/agregar"]
-    )
+    this.router.navigate(["personas/agregar"]);
   }
 
 }
